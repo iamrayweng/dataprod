@@ -11,7 +11,7 @@ shinyServer(function(input, output) {
         output$carlist <- renderTable({
                 finaldata <- transform(rankeddata, 
                                        score = mpgrank * input$mpgwt + hprank * input$hpwt + disprank * input$dispwt)
-                head(finaldata[with(finaldata, order(score)), c("mpg","hp","disp")], n=input$ncar)
+                head(finaldata[with(finaldata, order(-score)), c("mpg","hp","disp")], n=input$ncar)
                 
         })
         
